@@ -31,3 +31,16 @@ class Funcionario(Base):
                          variations={'thumbnail': {'width': 600,
                                                    'height': 600,
                                                    'crop': True}})
+    facebook = models.CharField('Face', max_length=100)
+    twitter = models.CharField('Twitter', max_length=100)
+    instagram = models.CharField('Insta', max_length=100)
+
+
+class Servico(Base):
+    image = StdImageField('Imagem',
+                          upload_to='servicos',
+                          variations={'thumbnail': {'width': 600,
+                                                    'height': 600,
+                                                    'crop': True}})
+    nome = models.CharField('Nome', max_length=100)
+    descricao = models.TextField('Descrição', max_length=1000)
