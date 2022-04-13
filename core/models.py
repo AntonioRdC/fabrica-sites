@@ -1,6 +1,3 @@
-from distutils.command import upload
-from statistics import mode
-from tkinter.tix import Tree
 from django.db import models
 from stdimage.models import StdImageField
 
@@ -29,6 +26,8 @@ class Funcionario(Base):
     nome = models.CharField('Nome', max_length=100)
     biografia = models.TextField('Bio', max_length=1000)
     cargo = models.ForeignKey('Cargo', on_delete=models.SET_NULL, null=True)
-    foto = StdImageField('Foto', upload_to='equipe', variations={'thumbnail': {'width': 600,
-                                                                                'height': 600,
-                                                                                'crop': True}})
+    foto = StdImageField('Foto',
+                         upload_to='equipe',
+                         variations={'thumbnail': {'width': 600,
+                                                   'height': 600,
+                                                   'crop': True}})
