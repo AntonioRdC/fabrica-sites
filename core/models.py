@@ -35,6 +35,13 @@ class Funcionario(Base):
     twitter = models.CharField('Twitter', max_length=100)
     instagram = models.CharField('Insta', max_length=100)
 
+    class Meta:
+        verbose_name = 'Funcionário'
+        verbose_name_plural = 'Funcionários'
+
+    def __str__(self) -> str:
+        return self.nome
+
 
 class Servico(Base):
     image = StdImageField('Imagem',
@@ -44,3 +51,10 @@ class Servico(Base):
                                                     'crop': True}})
     nome = models.CharField('Nome', max_length=100)
     descricao = models.TextField('Descrição', max_length=1000)
+
+    class Meta:
+        verbose_name = 'Serviço'
+        verbose_name_plural = 'Serviços'
+
+    def __str__(self) -> str:
+        return self.nome
