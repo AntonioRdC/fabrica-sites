@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+import dj_database_url
+from django.contrib.messages import constants as message_constants
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-fr96s$@5b2t4w^^&)h00l-=6$6q%^nbzz+j+fet630-nj_&r^6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -75,6 +78,8 @@ WSGI_APPLICATION = 'fabricasites.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+DATABASES = dj_database_url.config()
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -85,7 +90,7 @@ DATABASES = {
         'PORT': 3306,
     }
 }
-
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -133,4 +138,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+'''
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = 'antonio@email.com'
+EMAIL_PORT = 587
+EMAIL_USE_TSL = True
+EMAIL_HOST_PASSWORD = 'suasenha123'
+DEFAULT_FROM_EMAIL = 'contato@fabricasites.com.br'
+'''
+
+LOGOUT_REDIRECT_URL = 'core:index'
+
+MESSAGE_TAGS = {message_constants.DEBUG: 'debug',
+                message_constants.INFO: 'info',
+                message_constants.SUCCESS: 'success',
+                message_constants.WARNING: 'warning',
+                message_constants.ERROR: 'danger'}

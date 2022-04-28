@@ -1,0 +1,1 @@
+web: gunicorn fabricasites.wsgi --log-file -
