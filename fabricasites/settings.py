@@ -78,7 +78,9 @@ WSGI_APPLICATION = 'fabricasites.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = dj_database_url.config()
+DATABASES = {
+    'default': dj_database_url.config()
+}
 '''
 DATABASES = {
     'default': {
